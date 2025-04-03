@@ -1,0 +1,86 @@
+// Practical No.1
+Part A: Basics of Arduino Circuits
+
+//The following C++ code is used in the given case void 
+// C++ code 
+// 
+void setup() 
+{ 
+    pinMode(LED_BUILTIN, OUTPUT);
+} 
+void loop()
+{
+    digitalWrite(LED_BUILTIN, HIGH); 
+    delay(1000); // Wait for 1000 millisecond(s) 
+    digitalWrite(LED_BUILTIN, LOW); 
+    delay(1000); // Wait for 1000 millisecond(s)
+}
+                        
+Figure 1.1: Arduino Uno Board
+// Practical No.2
+To study the working of Light sensor using Arduino
+
+int ldrPin = A0;    
+int ledPin = 9;     
+int threshold = 500; 
+
+void setup() { 
+    pinMode(ledPin, OUTPUT); 
+    Serial.begin(9600);      
+} 
+
+void loop() { 
+    int ldrValue = analogRead(ldrPin); 
+    Serial.println(ldrValue);
+    if (ldrValue < threshold) {  
+        digitalWrite(ledPin, HIGH); 
+    } else { 
+        digitalWrite(ledPin, LOW);  
+    } 
+    delay(1); 
+}
+                        
+Figure 2: Arduino Uno Board
+// Practical No.3
+Program using temperature sensors
+
+char degree = 176;                
+int sensor = A1; 
+
+void setup() {  
+    pinMode(sensor, INPUT);  
+    Serial.begin(9600); 
+} 
+
+void loop() { 
+    int tmp = analogRead(sensor); 
+    float voltage = (tmp * 5.0) / 1024; 
+    float tmpCel = (voltage - 0.5) * 100.0; 
+
+    Serial.print("Celsius: ");  
+    Serial.print(tmpCel);  
+    Serial.println(degree);  
+    delay(1000);  
+}
+                        
+Arduino UNO, Temperature Sensor TMP 36
+// Practical No.4
+Program using Humidity sensors
+
+const int analogIn = A1; 
+int humiditySensorOutput = 0; 
+
+void setup() { 
+    Serial.begin(9600); 
+}
+
+void loop() { 
+    humiditySensorOutput = analogRead(analogIn); 
+    int humidityPercentage = map(humiditySensorOutput, 0, 1023, 10, 70); 
+    Serial.print("Humidity: ");  
+    Serial.print(humidityPercentage); 
+    Serial.println("%"); 
+    delay(5000); 
+}
+                        
+Arduino UNO, Potentiometer (wiper)
